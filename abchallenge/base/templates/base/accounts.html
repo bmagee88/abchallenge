@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<!-- replaces block content in main.html -->
+{% block content %}
+
+<h1>Accounts template</h1>
+<h2>Hello, {{request.user.username}}!</h2>
+
+<table>
+    <tr>
+        <th>Account Number</th>
+        <th>User</th>
+        <th>Principle</th>
+    </tr>
+
+    {% for acct in accounts %}
+    <tr>
+        <td>{{acct.acct_no}}</td>
+        <td>{{acct.user}}</td>
+        <td>{{acct.principle}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+{% endblock content %}

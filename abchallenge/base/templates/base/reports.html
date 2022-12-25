@@ -1,0 +1,39 @@
+<!-- get the past 5 days of transactions with option to save to a file on disk-->
+
+<!-- download report should check if request.user is 'root'-->
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+{% extends 'main.html' %}
+
+<!-- replaces block content in main.html -->
+{% block content %}
+
+<h1>Reports template</h1>
+<h2>Hello, {{request.user.username}}!</h2>
+
+<table>
+    <tr>
+        <th>transaction number</th>
+        <th>is_success</th>
+    </tr>
+
+    {% for record in last_5 %}
+    <tr>
+        <td>{{record.trans_no}}</td>
+        <td>{{record.is_success}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+
+{% endblock content %}

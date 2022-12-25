@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if t_no == -1 %}
+<b>Entry failed: {{acct}}, {{amt}}, {{is_credit}}</b>
+{% elif acct != None %}
+<b>Entry Successful: {{acct}}, {{amt}}, {{is_credit}}</b>
+{% endif %}
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit Form" />
+    </form>
+</div>
+
+{% endblock content %}

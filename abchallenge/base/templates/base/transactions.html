@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<!-- replaces block content in main.html -->
+{% block content %}
+
+<h1>Transactions template</h1>
+<h2>Hello, {{request.user.username}}!</h2>
+
+<table>
+    <tr>
+        <th>transaction number</th>
+        <th>in_account</th>
+        <th>out_account</th>
+        <th>amount</th>
+        <th>attempted_at</th>
+        <th>is_success</th>
+    </tr>
+
+    {% for trans in transactions %}
+    <tr>
+        <td>{{trans.trans_no}}</td>
+        <td>{{trans.in_acct.acct_no}}</td>
+        <td>{{trans.out_acct.acct_no}}</td>
+        <td>{{trans.amt}}</td>
+        <td>{{trans.attempt_at|date:'d/M/Y'}}</td>
+        <td>{{trans.is_success}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+{% endblock content %}

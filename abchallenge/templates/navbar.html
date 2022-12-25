@@ -1,0 +1,38 @@
+<a href="/">
+    <h1>AlphaBet</h1>
+</a>
+<a href="{% url 'home' %}"> Signup</a>
+<a href="{% url 'home' %}"> Login</a>
+
+<hr>
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        padding: 8px;
+        background-color: #dddddd;
+    }
+</style>
+
+<ul>
+    <li><a href="{% url 'myaccount' %}">My Account</a></li>
+    {% if request.user.username == "root" %}
+    <li><a href="{% url 'perform-advance' %}">Perform Advance</a></li>
+    <li><a href="{% url 'repayments' %}">Repayments</a></li>
+    <li><a href="{% url 'reports' %}">Reports</a></li>
+    <li><a href="{% url 'transactions' %}">Transactions</a></li>
+    {% endif %}
+</ul>
+
+<hr>

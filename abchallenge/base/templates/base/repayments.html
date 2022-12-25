@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+<!-- replaces block content in main.html -->
+{% block content %}
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<h1>repayments template</h1>
+
+<h2>Hello, {{request.user.username}}!</h2>
+
+<table>
+    <tr>
+        <th>Repayment number</th>
+        <th>Account</th>
+        <th>Total Advance Amount</th>
+        <th>Created On</th>
+        <th>Start Payments On</th>
+        <th>End Payments On</th>
+        <th>Number of Defaults</th>
+    </tr>
+
+    {% for rep in repayments %}
+    <tr>
+        <td>{{rep.repayment_no}}</td>
+        <td>{{rep.acct.acct_no}}</td>
+        <td>{{rep.total_amt}}</td>
+        <td>{{rep.created_at|date:'d/M/Y'}}</td>
+        <td>{{rep.start_at|date:'d/M/Y'}}</td>
+        <td>{{rep.end_at|date:'d/M/Y'}}</td>
+        <td>{{rep.num_defaults}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+{% endblock content %}
